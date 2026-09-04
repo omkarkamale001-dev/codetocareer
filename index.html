@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code to Career — Job-Ready Full Stack Developer Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --navy: #16325c;
+            --navy-deep: #07111f;
+            --yellow: #f5c518;
+            --yellow-soft: #fff6d6;
+            --text: #1f2a44;
+            --muted: #5b657a;
+            --green: #2db57a;
+            --green-soft: #e7f7ee;
+            --line: #e6ebf2;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background: #e8edf4;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 24px auto;
+            background: var(--white);
+            box-shadow: 0 18px 50px rgba(16, 40, 76, 0.18);
+            overflow: visible;
+        }
+
+        /* Header / Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+            padding: 22px 42px 72px;
+            background-color: #06101c;
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.09) 1.15px, transparent 1.15px),
+                linear-gradient(180deg, #050c16 0%, #0a182c 55%, #0c1e38 100%);
+            background-size: 22px 22px, 100% 100%;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(125deg,
+                    transparent 0 18px,
+                    rgba(255, 255, 255, 0.025) 18px 19px);
+            mask-image: linear-gradient(90deg, transparent 48%, #000 78%);
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: #f39a1a;
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: -1px;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            line-height: 1.1;
+        }
+
+        .brand p {
+            font-size: 11px;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .kicker {
+            font-family: "Oswald", sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .headline {
+            font-family: "Oswald", sans-serif;
+            font-size: 62px;
+            font-weight: 700;
+            color: var(--yellow);
+            letter-spacing: 1px;
+            line-height: 0.95;
+            margin: 4px 0 16px;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            font-family: "Oswald", sans-serif;
+            font-size: 26px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            margin-bottom: 12px;
+        }
+
+        .subhead::after {
+            content: "";
+            display: block;
+            width: 72px;
+            height: 4px;
+            background: var(--yellow);
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        .points {
+            font-size: 17px;
+            opacity: 0.95;
+            margin-bottom: 16px;
+        }
+
+        .roadmap {
+            color: var(--yellow);
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .illustration {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 380px;
+            padding: 36px 48px 20px;
+        }
+
+        .illustration img {
+            width: 100%;
+            max-width: 485px;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45));
+        }
+
+        .tech-badge {
+            position: absolute;
+            z-index: 2;
+            top: 46%;
+            left: 50%;
+            width: 92px;
+            height: 92px;
+            border-radius: 14px;
+            background: rgba(8, 16, 32, 0.9);
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+            display: grid;
+            place-items: center;
+            transform: translate(-50%, -50%) rotate(var(--a)) translateY(var(--r)) rotate(calc(-1 * var(--a)));
+        }
+
+        .tech-badge svg {
+            width: 64px;
+            height: 64px;
+        }
+
+        .tech-badge.react {
+            --a: -30deg;
+            --r: -172px;
+        }
+
+        .tech-badge.node {
+            --a: -90deg;
+            --r: -172px;
+        }
+
+        .tech-badge.code {
+            --a: 150deg;
+            --r: -172px;
+        }
+
+        .tech-badge.postgres {
+            --a: 30deg;
+            --r: -172px;
+        }
+
+        .tech-badge.docker {
+            --a: 90deg;
+            --r: -172px;
+        }
+
+        .tech-badge.cloud {
+            --a: 210deg;
+            --r: -172px;
+        }
+
+        /* Features */
+        .features {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin: -48px 28px 8px;
+            padding: 28px 8px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 16px 40px rgba(16, 40, 76, 0.14), 0 2px 8px rgba(16, 40, 76, 0.06);
+        }
+
+        .feature {
+            text-align: center;
+            padding: 8px 18px;
+            position: relative;
+        }
+
+        .feature+.feature::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            bottom: 12px;
+            width: 1px;
+            background: #e8edf4;
+        }
+
+        .feature .icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 12px;
+            display: grid;
+            place-items: center;
+        }
+
+        .feature .icon img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .feature p {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        /* Main two columns */
+        .main {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 28px;
+            padding: 28px 36px 8px;
+            align-items: start;
+        }
+
+        .section-title {
+            background: var(--navy);
+            color: #fff;
+            display: inline-block;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        .learn-item {
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            gap: 12px;
+            align-items: start;
+            margin: 0;
+            padding: 14px 0;
+            border-bottom: 1px solid #e8edf4;
+        }
+
+        .learn-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .learn-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .learn-item p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .learn-item.frontend h4 {
+            color: #43b581;
+        }
+
+        .learn-item.backend h4 {
+            color: #7b61c6;
+        }
+
+        .learn-item.database h4 {
+            color: #3b82c4;
+        }
+
+        .learn-item.tools h4 {
+            color: #f08a24;
+        }
+
+        .learn-item.cloud h4 {
+            color: #3aa0d9;
+        }
+
+        .learn-item.soft h4 {
+            color: #e85d8e;
+        }
+
+        .capstone {
+            background: var(--yellow-soft);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-top: 12px;
+        }
+
+        .capstone h4 {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .capstone p {
+            font-size: 13px;
+            color: #4a5568;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .why-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .check {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            margin-top: 2px;
+        }
+
+        .quote {
+            background: var(--green-soft);
+            border-radius: 8px;
+            padding: 16px 20px 16px 28px;
+            position: relative;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #255c45;
+            margin-bottom: 0;
+        }
+
+        .quote::before,
+        .quote::after {
+            font-size: 42px;
+            color: #3cb371;
+            position: absolute;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .quote::before {
+            content: "“";
+            top: 2px;
+            left: 8px;
+        }
+
+        .quote::after {
+            content: "”";
+            right: 10px;
+            bottom: -8px;
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid #dce3ed;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 0 22px 20px;
+        }
+
+        .panel .section-title {
+            display: inline-block;
+            margin: 0 0 8px -22px;
+            border-radius: 0 0 12px 0;
+            padding: 10px 18px 10px 22px;
+        }
+
+        .side-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .details {
+            display: grid;
+            gap: 14px;
+        }
+
+        .detail {
+            display: grid;
+            grid-template-columns: 32px auto 1fr;
+            gap: 10px;
+            align-items: start;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            min-width: 92px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .detail-value em {
+            display: block;
+            font-size: 12.5px;
+            color: var(--muted);
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .rupee {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        /* Bottom CTA */
+        .cta {
+            display: grid;
+            grid-template-columns: 1.25fr 0.85fr;
+            margin: 18px 28px 0;
+            align-items: stretch;
+        }
+
+        .orient {
+            background: var(--navy);
+            color: #fff;
+            border-radius: 10px 0 0 10px;
+            padding: 22px 26px;
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .orient h3 {
+            background: #fff;
+            color: var(--navy);
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            margin-bottom: 12px;
+        }
+
+        .orient .q {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .orient .live {
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .orient .open {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .orient .soon {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 12.5px;
+            opacity: 0.95;
+        }
+
+        .qr-wrap {
+            text-align: center;
+        }
+
+        .qr {
+            background: #fff;
+            padding: 8px;
+            border-radius: 6px;
+            width: 118px;
+            height: 118px;
+            margin: 0 auto 6px;
+        }
+
+        .scan {
+            color: #f39a1a;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        .contact {
+            background: #f4f7fb;
+            border: 1px solid var(--line);
+            border-left: 0;
+            border-radius: 0 10px 10px 0;
+            padding: 22px 24px;
+        }
+
+        .contact h3 {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            margin-bottom: 14px;
+        }
+
+        .contact li {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 13.5px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: var(--yellow);
+            margin-top: 18px;
+            text-align: center;
+            padding: 12px 16px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero,
+            .main,
+            .cta,
+            .orient {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero {
+                padding-bottom: 64px;
+            }
+
+            .hero-grid,
+            .features,
+            .main,
+            .cta,
+            .orient {
+                grid-template-columns: 1fr;
+            }
+
+            .kicker {
+                font-size: 28px;
+            }
+
+            .headline {
+                font-size: 42px;
+            }
+
+            .subhead {
+                font-size: 20px;
+            }
+
+            .illustration {
+                min-height: 300px;
+                padding: 28px 20px 12px;
+            }
+
+            .illustration img {
+                max-width: 240px;
+            }
+
+            .tech-badge {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+            }
+
+            .tech-badge svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .tech-badge.react,
+            .tech-badge.node,
+            .tech-badge.code,
+            .tech-badge.postgres,
+            .tech-badge.docker,
+            .tech-badge.cloud {
+                --r: -118px;
+            }
+
+            .features {
+                margin: -36px 16px 8px;
+                padding: 12px 8px;
+            }
+
+            .feature+.feature::before {
+                top: 0;
+                width: auto;
+                height: 1px;
+                left: 24px;
+                right: 24px;
+                bottom: auto;
+            }
+
+            .feature {
+                padding: 16px 18px;
+            }
+
+            .orient,
+            .contact {
+                border-radius: 10px;
+            }
+
+            .contact {
+                border: 1px solid var(--line);
+            }
+
+            .cta {
+                margin: 18px 16px 0;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header class="hero">
+            <div class="topbar">
+                <div class="brand">
+                    <div class="brand-mark">&lt;/&gt;</div>
+                    <div>
+                        <h1>Code to Career</h1>
+                        <p>Learn. Build. Get Hired.</p>
+                    </div>
+                </div>
+                <div class="location">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="#f5c518" />
+                        <circle cx="12" cy="10" r="2.5" fill="#16325c" />
+                    </svg>
+                    Basavakalyan, Karnataka
+                </div>
+            </div>
+
+            <div class="hero-grid">
+                <div>
+                    <div class="kicker">FROM COLLEGE TO</div>
+                    <div class="headline">SOFTWARE DEVELOPER</div>
+                    <div class="subhead">Job-Ready Full Stack Developer Program</div>
+                    <p class="points">Industry skills. Real projects. Interview preparation.</p>
+                    <p class="roadmap">Your roadmap to a successful tech career.</p>
+                </div>
+
+                <div class="illustration">
+                    <span class="tech-badge react" title="React">
+                        <svg viewBox="-11.5 -10.2 23 20.5" aria-hidden="true">
+                            <circle r="2.05" fill="#61dafb" />
+                            <g fill="none" stroke="#61dafb" stroke-width="1">
+                                <ellipse rx="11" ry="4.2" />
+                                <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+                                <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="tech-badge node" title="Node.js">
+                        <svg viewBox="0 0 256 292" aria-hidden="true">
+                            <path fill="#539e43" d="M127.8.2 2.4 72.5v144.9l125.4 72.3 125.4-72.3V72.5L127.8.2z" />
+                            <path fill="#fff"
+                                d="M181 84.4c-1.4-7.8-11.3-13-25.4-13-14.7 0-25.2 6.3-25.4 15.4h15.8c.2-3.3 4.4-5.4 9.6-5.4 5.5 0 9.2 2.1 9.2 5.2 0 2.8-2.3 4.3-8.4 5.6l-6.4 1.3c-14.4 3-21.4 9.3-21.4 20.6 0 12.8 10.4 20 25.3 20 15.2 0 26.3-7.2 26.7-17.8h-16.3c-.6 4-5 6.6-10.8 6.6-5.4 0-9.1-2.2-9.1-5.6 0-2.7 2.2-4.3 8.1-5.6l6.2-1.3c15.1-3.2 22.3-9.6 22.3-21.6zm-95.2-.8v71.8h16.8V135h21.3c18.8 0 30.4-10.4 30.4-26.1 0-15.6-11.8-25.3-30.6-25.3H85.8zm16.8 12.8h18.2c9.4 0 14.8 4.6 14.8 12.4 0 7.9-5.4 12.6-14.8 12.6h-18.2V96.4z" />
+                        </svg>
+                    </span>
+                    <span class="tech-badge code" title="Code">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M9 8L5 12l4 4M15 8l4 4-4 4" stroke="#e8edf4" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <span class="tech-badge postgres" title="PostgreSQL">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="#336791"
+                                d="M12.9 2.1c-1.4-.1-2.7.2-3.8.9-.7.4-1.3 1-1.7 1.7-.3.5-.4 1.1-.5 1.7-.1.8 0 1.6.2 2.4.1.4.2.9.2 1.3 0 .2 0 .3-.1.4-.4.3-.8.4-1.3.4-.7 0-1.3-.3-1.8-.8-.4-.4-.6-.9-.7-1.5-.1-.5 0-1 .2-1.4.3-.6.8-1 1.4-1.2.2-.1.3-.2.3-.4s-.2-.4-.4-.3c-1 .3-1.8 1-2.2 1.9-.4.8-.4 1.7-.2 2.6.3 1 1 1.8 1.9 2.3.7.4 1.5.5 2.3.4.7-.1 1.3-.4 1.8-.9.2.7.5 1.4.9 2 .6 1 1.4 1.8 2.3 2.4.6.4 1.3.7 2 .9.4.1.8.1 1.2 0 .5-.1.9-.3 1.3-.6.5-.4.8-1 1-1.6.1-.5.1-1 0-1.5-.2-1-.7-1.8-1.4-2.5.6-.1 1.2-.4 1.7-.8.6-.5 1-1.2 1.2-2 .1-.5.1-1 0-1.5-.2-.8-.6-1.5-1.2-2-.7-.6-1.6-1-2.6-1.1-.4 0-.8 0-1.2.1zm.5 1.6c.9 0 1.7.3 2.3.9.5.5.8 1.1.9 1.8.1.4 0 .8-.1 1.2-.2.6-.6 1.1-1.1 1.4-.5.3-1.1.5-1.7.4-.3 0-.5 0-.8-.1-.6-.2-1.1-.6-1.5-1.1-.4-.5-.6-1.1-.7-1.8 0-.4.1-.8.3-1.2.3-.6.8-1.1 1.4-1.3.3-.1.7-.2 1-.2z" />
+                        </svg>
+                    </span>
+                    <span class="tech-badge docker" title="Docker">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="#2496ed"
+                                d="M4.2 10.4h2.1V8.4H4.2v2zm2.6 0h2.1V8.4H6.8v2zm2.6 0h2.1V8.4H9.4v2zM6.8 8h2.1V6H6.8v2zm2.6 0h2.1V6H9.4v2zm2.6 2.4h2.1V8.4h-2.1v2zM4.4 12.7c-.2 1.8.5 3.1 1.8 4 .9.6 2 .9 3.2.9 2.6 0 4.6-1 6.1-2.9 1 .1 2.1-.1 3-.8.8-.6 1.3-1.5 1.4-2.5H4.4zm15.3-1.1c-.2-.8-.7-1.4-1.4-1.7l-.4 1.5c.4.1.7.4.8.8.3 1.1-.3 2.1-1.3 2.5-.4.2-.9.2-1.3.1.8 1.4 2.1 2.2 3.8 2.2.4 0 .8 0 1.2-.1 1.8-.5 2.8-2 2.8-3.9 0-.4 0-.8-.1-1.2-.7.1-1.4.1-2.1-.2z" />
+                        </svg>
+                    </span>
+                    <span class="tech-badge cloud" title="Azure">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="#0078d4"
+                                d="M13.5 4.2 7.1 16.4H2.4L10.2 3h2.2l1.1 1.2zm.7 1.2L11.6 20.8h8.2L22 16.4H9.7l4.5-11z" />
+                        </svg>
+                    </span>
+                    <img style="width: 440px;" src="boycoding.png" alt="Student coding on a laptop" />
+                </div>
+            </div>
+        </header>
+
+        <section class="features">
+            <article class="feature">
+                <div class="icon">
+                    <img src="icon-job-training.png" alt="" width="48" height="48" />
+                </div>
+                <h3>Job-Oriented Training</h3>
+                <p>Learn what companies actually expect from freshers.</p>
+            </article>
+            <article class="feature">
+                <div class="icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <rect x="6" y="10" width="36" height="24" rx="3" stroke="#2db57a" stroke-width="2.4" />
+                        <path d="M16 18l-5 4 5 4M32 18l5 4-5 4M26 16l-4 16" stroke="#2db57a" stroke-width="2.2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        <rect x="16" y="36" width="16" height="3" rx="1.5" fill="#2db57a" />
+                    </svg>
+                </div>
+                <h3>Hands-on Projects</h3>
+                <p>Build real-world projects from scratch for your portfolio.</p>
+            </article>
+            <article class="feature">
+                <div class="icon">
+                    <img src="icon-interview.png" alt=""
+                        style="width: 100px !important; height: 80px !important; margin-left: -27px;" width="80"
+                        height="80" />
+                </div>
+                <h3>Interview Preparation</h3>
+                <p>Aptitude, Technical &amp; HR interviews with mock practice.</p>
+            </article>
+            <article class="feature">
+                <div class="icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#16325c" aria-hidden="true">
+                        <path
+                            d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.57.1.78-.25.78-.55v-2.1c-3.18.69-3.85-1.37-3.85-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.54-.29-5.21-1.27-5.21-5.66 0-1.25.45-2.27 1.17-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.14 1.17a10.9 10.9 0 0 1 5.72 0c2.18-1.48 3.14-1.17 3.14-1.17.62 1.58.23 2.75.11 3.04.73.8 1.17 1.82 1.17 3.07 0 4.4-2.68 5.37-5.23 5.65.41.35.78 1.05.78 2.13v3.16c0 .3.2.66.79.55A11.5 11.5 0 0 0 12 .5z" />
+                    </svg>
+                </div>
+                <h3>GitHub &amp; Resume</h3>
+                <p>Build a strong profile that gets you noticed.</p>
+            </article>
+            <article class="feature">
+                <div class="icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <rect x="11" y="8" width="26" height="32" rx="3" stroke="#e0a106" stroke-width="2.3" />
+                        <path d="M18 17h12M18 23h12M18 29h8" stroke="#e0a106" stroke-width="2" stroke-linecap="round" />
+                        <circle cx="32" cy="34" r="7" fill="#f5c518" />
+                        <circle cx="32" cy="34" r="3.5" stroke="#16325c" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <h3>Certification of Completion</h3>
+                <p>Showcase your skills with a professional certificate.</p>
+            </article>
+        </section>
+
+        <section class="main">
+            <article class="panel">
+                <h2 class="section-title">WHAT YOU WILL LEARN</h2>
+
+                <div class="learn-item frontend">
+                    <div class="badge" style="background:#43b581">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="4" width="18" height="14" rx="2" stroke="#fff" stroke-width="2" />
+                            <path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 8l-2 8" stroke="#fff" stroke-width="1.8" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Frontend Development</h4>
+                        <p>HTML, CSS, JavaScript, React.js</p>
+                    </div>
+                </div>
+
+                <div class="learn-item backend">
+                    <div class="badge" style="background:#7b61c6">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 7h16v10H4z" stroke="#fff" stroke-width="2" />
+                            <path d="M8 12h8" stroke="#fff" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Backend Development</h4>
+                        <p>Node.js, Express.js, REST APIs, Authentication</p>
+                    </div>
+                </div>
+
+                <div class="learn-item database">
+                    <div class="badge" style="background:#3b82c4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <ellipse cx="12" cy="7" rx="8" ry="3" stroke="#fff" stroke-width="2" />
+                            <path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7" stroke="#fff" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Database</h4>
+                        <p>PostgreSQL, SQL, Database Design</p>
+                    </div>
+                </div>
+
+                <div class="learn-item tools">
+                    <div class="badge" style="background:#f08a24">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                stroke="#fff" stroke-width="1.6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Tools &amp; Technologies</h4>
+                        <p>Git, GitHub, Docker, Postman</p>
+                    </div>
+                </div>
+
+                <div class="learn-item cloud">
+                    <div class="badge" style="background:#3aa0d9">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V7l8-4z" stroke="#fff"
+                                stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Cloud &amp; Deployment</h4>
+                        <p>Azure, App Service, CI/CD, Environment Setup</p>
+                    </div>
+                </div>
+
+                <div class="learn-item soft">
+                    <div class="badge" style="background:#e85d8e">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="2" />
+                            <path d="M5 20c1.5-4 4-6 7-6s5.5 2 7 6" stroke="#fff" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Interview &amp; Soft Skills</h4>
+                        <p>DSA (Basics), System Design (Basics), Communication, Resume, LinkedIn, HR Skills</p>
+                    </div>
+                </div>
+
+                <div class="capstone">
+                    <div class="badge" style="background:#f5c518; color:#16325c">🚀</div>
+                    <div>
+                        <h4>Capstone Project</h4>
+                        <p>Build and deploy a complete full stack application and add it to your portfolio.</p>
+                    </div>
+                </div>
+            </article>
+
+            <div class="side-stack">
+                <article class="panel">
+                    <h2 class="section-title">WHY JOIN US?</h2>
+                    <ul class="why-list">
+                        <li><span class="check"><svg width="10" height="10" viewBox="0 0 12 12">
+                                    <path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" />
+                                </svg></span> Industry-experienced mentor (10+ yrs in software development)</li>
+                        <li><span class="check"><svg width="10" height="10" viewBox="0 0 12 12">
+                                    <path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" />
+                                </svg></span> Small batch size for personalized attention</li>
+                        <li><span class="check"><svg width="10" height="10" viewBox="0 0 12 12">
+                                    <path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" />
+                                </svg></span> Weekday / Weekend batch options</li>
+                        <li><span class="check"><svg width="10" height="10" viewBox="0 0 12 12">
+                                    <path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" />
+                                </svg></span> Practical learning with real-world examples</li>
+                        <li><span class="check"><svg width="10" height="10" viewBox="0 0 12 12">
+                                    <path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" fill="none" />
+                                </svg></span> Focus on employability, not just theory</li>
+                    </ul>
+
+                    <blockquote class="quote">We don't just teach technology, we prepare you for a successful career.
+                    </blockquote>
+                </article>
+
+                <article class="panel">
+                    <h2 class="section-title">PROGRAM DETAILS</h2>
+                    <div class="details">
+                        <div class="detail">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="5" width="18" height="16" rx="2" stroke="#16325c" stroke-width="2" />
+                                <path d="M8 3v4M16 3v4M3 10h18" stroke="#16325c" stroke-width="2" />
+                            </svg>
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">: 4 – 6 Months</span>
+                        </div>
+                        <div class="detail">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <circle cx="9" cy="8" r="3" stroke="#16325c" stroke-width="2" />
+                                <circle cx="16" cy="9" r="2.5" stroke="#16325c" stroke-width="2" />
+                                <path
+                                    d="M3 19c.8-3.2 3-5 6-5s5.2 1.8 6 5M14 19c.4-2 1.6-3.2 3.5-3.5 1.6.2 2.8 1.2 3.5 3.5"
+                                    stroke="#16325c" stroke-width="2" />
+                            </svg>
+                            <span class="detail-label">Batch Size</span>
+                            <span class="detail-value">: 15 – 20 Students</span>
+                        </div>
+                        <div class="detail">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9" stroke="#16325c" stroke-width="2" />
+                                <path d="M12 7v5l3 2" stroke="#16325c" stroke-width="2" />
+                            </svg>
+                            <span class="detail-label">Mode</span>
+                            <span class="detail-value">: Offline (Basavakalyan)</span>
+                        </div>
+                        <div class="detail">
+                            <span class="rupee">₹</span>
+                            <span class="detail-label">Fee</span>
+                            <span class="detail-value">: Affordable. Easy Installments
+                                <em>(Scholarships for deserving students)</em>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="orient">
+                <div>
+                    <h3>FREE ORIENTATION SESSION</h3>
+                    <p class="q">What Does It Take to Get a Software Job in 2026?</p>
+                    <p class="live">Live Industry Talk + Roadmap + Q&amp;A</p>
+                    <p class="open">Open for All BCA / B.Sc / B.E / B.Tech Students</p>
+                    <p class="soon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="16" rx="2" stroke="#f5c518" stroke-width="2" />
+                            <path d="M8 3v4M16 3v4M3 10h18" stroke="#f5c518" stroke-width="2" />
+                        </svg>
+                        Coming Soon — Scan QR or register to get notified!
+                    </p>
+                </div>
+                <div class="qr-wrap">
+                    <div class="qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https://codetocareer.in"
+                            width="102" height="102" alt="QR code to register at codetocareer.in" />
+                    </div>
+                    <div class="scan">↗ SCAN TO REGISTER</div>
+                </div>
+            </div>
+
+            <div class="contact">
+                <h3>LET'S BUILD YOUR FUTURE TOGETHER!</h3>
+                <ul>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.36 2.3.56 3.5.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.56 3.5a1 1 0 0 1-.25 1L6.6 10.8z"
+                                stroke="#16325c" stroke-width="1.7" />
+                        </svg>
+                        +91 XXXXXXXXXX
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#16325c" stroke-width="1.7" />
+                            <path d="M4 7l8 6 8-6" stroke="#16325c" stroke-width="1.7" />
+                        </svg>
+                        hello@codetocareer.in
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="#16325c" stroke-width="1.7" />
+                            <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" stroke="#16325c"
+                                stroke-width="1.5" />
+                        </svg>
+                        <a href="https://codetocareer.in" style="color:inherit;text-decoration:none">codetocareer.in</a>
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" stroke="#16325c"
+                                stroke-width="1.7" />
+                            <circle cx="12" cy="9" r="2.2" stroke="#16325c" stroke-width="1.7" />
+                        </svg>
+                        Basavakalyan, Karnataka
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            ★ Limited Seats. Serious Learning. Real Results. &nbsp;|&nbsp; Your Effort Today, Your Success Tomorrow.
+        </footer>
+    </div>
+</body>
+
+</html>
